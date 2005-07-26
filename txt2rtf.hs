@@ -21,10 +21,15 @@ module Main where
 import System.Environment
 import Data.List
 
+-- 1440 rtf points for margins
+-- for font size, use 2x the point size.
+
 preamble :: String
 preamble = concat $ intersperse "\n"
     ["{\\rtf\\ansi\\deff0",
-     "{\\fonttbl{\\f0\\fswiss Courier New;}}\n"]
+     "{\\fonttbl{\\f0\\fswiss Courier New;}}",
+     "\\paperw12240\\paperh15840\\margl576\\margr576\\margt576\\margb576",
+     "\fs16 "]
 footer = "}\n"
 
 adjline :: String -> String
