@@ -19,20 +19,23 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 module Main where
 
 import System.Environment
+import Data.List
 
-preamble = intersperse "\n" 
+preamble :: String
+preamble = concat $ intersperse "\n"
     ["{\\rtf\\ansi\\deff0",
      "{\\fonttbl{\\f0\\fswiss Courier New;}}\n"]
 footer = "}\n"
 
 adjline :: String -> String
 adjline [] = "\\line"
-adjline x:xs =
+adjline (x:xs) =
     case x of
            '\\' -> "\\\\" ++ adjline xs
            '{' -> "\\{" ++ adjline xs
            '}' -> "\\}" ++ adjline xs
            '\f' -> "\\page" ++ adjline xs
+           x -> x : adjline xs
 
 adjlines :: [String] -> [String]
 adjlines = map adjline
