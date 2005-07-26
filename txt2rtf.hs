@@ -21,6 +21,11 @@ module Main where
 import System.Environment
 import Data.List
 
+version = "1.0.0"
+author = "John Goerzen"
+program = "txt2rtf"
+helppreamble = program ++ " " ++ version ++ " by " ++ author
+
 -- 1440 rtf points for margins
 -- for font size, use 2x the point size.
 
@@ -50,7 +55,8 @@ convert x = preamble ++ (unlines . adjlines . lines $ x) ++ footer
 
 convertFile :: String -> IO ()
 convertFile fn =
-    do i <- readFile fn
+    do putStrLn $ "Converting " ++ fn ++ " to " ++ newfn
+       i <- readFile fn
        writeFile newfn (convert i)
     where newfn = if isSuffixOf ".txt" fn
                       then take (length fn - 4) fn ++ ".rtf"
@@ -58,8 +64,9 @@ convertFile fn =
 
 printHelp :: IO ()
 printHelp =
-    do p "Usage:"
-       p "txt2rtf without filenames will emit RTF on stdout"
+    do p $ helppreamble ++ "\n"
+       p "Usage:"
+       p "txt2rtf without args will read from stdin and emit RTF on stdout"
        p "txt2rtf with one or more files will convert those files"
     where p = putStrLn
 
