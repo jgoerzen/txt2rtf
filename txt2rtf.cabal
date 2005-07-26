@@ -1,0 +1,11 @@
+Name: txt2rtf
+Version: 1.0.0
+License: GPL
+Maintainer: John Goerzen <jgoerzen@complete.org>
+Stability: Alpha
+Copyright: Copyright (c) 2005 John Goerzen
+Build-Depends: haskell-src
+
+Executable: txt2rtf
+Main-Is: txt2rtf.hs
+GHC-Options: -O2
