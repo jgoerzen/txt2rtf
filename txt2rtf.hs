@@ -29,7 +29,7 @@ preamble = concat $ intersperse "\n"
     ["{\\rtf\\ansi\\deff0",
      "{\\fonttbl{\\f0\\fswiss Courier New;}}",
      "\\paperw12240\\paperh15840\\margl576\\margr576\\margt576\\margb576",
-     "\fs16 "]
+     "\\fs16 "]
 footer = "}\n"
 
 adjline :: String -> String
@@ -39,7 +39,7 @@ adjline (x:xs) =
            '\\' -> "\\\\" ++ adjline xs
            '{' -> "\\{" ++ adjline xs
            '}' -> "\\}" ++ adjline xs
-           '\f' -> "\\page" ++ adjline xs
+           '\f' -> "\\page " ++ adjline xs
            x -> x : adjline xs
 
 adjlines :: [String] -> [String]
