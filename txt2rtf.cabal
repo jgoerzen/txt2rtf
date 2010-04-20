@@ -9,11 +9,11 @@ Build-Type: Simple
 Synopsis: Filter to convert plain text files to RTF
 Category: Text
 license-file: COPYRIGHT
-extra-source-files: COPYING, Makefile
-source-repository head
-  type: git
-  location: git://github.com/jgoerzen/txt2rtf.git
 homepage: http://github.com/jgoerzen/txt2rtf
+extra-source-files: COPYING, Makefile
+Cabal-Version: >= 1.2
 
 Executable: txt2rtf
 Main-Is: txt2rtf.hs
+
+
